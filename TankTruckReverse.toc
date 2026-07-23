@@ -1,0 +1,11 @@
+## Interface: 120007
+## Title: TankTruckReverse
+## Notes: Plays a truck-reversing beep when a tank backpedals in combat
+## Notes-frFR: Joue un bip de camion qui recule quand un tank recule en combat
+## Author: TheDevOpser
+## Version: 1.0.0
+## SavedVariables: TankTruckReverseDB
+## IconTexture: Interface\AddOns\TankTruckReverse\Textures\icon
+
+Core\Trigger.lua
+TankTruckReverse.lua
