@@ -21,7 +21,7 @@ local function shouldBeep()
 end
 
 local function playBeep()
-    PlaySoundFile(SOUND_PATH, "SFX")
+    PlaySoundFile(SOUND_PATH, "Master")
 end
 
 -- ---------------------------------------------------------------------------
