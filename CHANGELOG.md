@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented here.
 
+## [1.1.0] - 2026-07-24
+
+### Changed
+- The beep is now much more audible over combat noise. It plays on the `Master`
+  sound channel instead of `SFX`, so it is no longer buried under combat sound
+  effects or dimmed by the "Sound Effects" volume slider.
+- Regenerated `Media/backup_beep.ogg` as a band-limited square wave (1250 Hz
+  fundamental + 3rd/5th harmonics), normalized louder — closer to a real backup
+  alarm (SAE J994) and cuts through the mix, unlike the previous pure sine.
+
 ## [1.0.0] - 2026-07-23
 
 ### Added
