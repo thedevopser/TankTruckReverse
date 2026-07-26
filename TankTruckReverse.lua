@@ -1,9 +1,7 @@
 TankTruckReverse = TankTruckReverse or {}
 
 local Trigger = TankTruckReverse.Trigger
-
-local SOUND_PATH    = "Interface\\AddOns\\TankTruckReverse\\Media\\backup_beep.ogg"
-local REPEAT_PERIOD = 0.7 -- ré-émission du bip tant que la touche recul est tenue (s)
+local Sounds  = TankTruckReverse.Sounds
 
 local backpedaling = false -- vrai entre MoveBackwardStart et MoveBackwardStop
 local debug = false
@@ -20,8 +18,13 @@ local function shouldBeep()
     return Trigger.ShouldBeep(isEnabled(), backpedaling, InCombatLockdown(), isTank())
 end
 
+-- Son courant (résolu depuis le choix stocké, repli sur le défaut).
+local function currentSound()
+    return Sounds.Resolve(TankTruckReverseDB and TankTruckReverseDB.sound)
+end
+
 local function playBeep()
-    PlaySoundFile(SOUND_PATH, "Master")
+    PlaySoundFile(currentSound().file, "Master")
 end
 
 -- ---------------------------------------------------------------------------
@@ -41,7 +44,8 @@ end
 
 local function startLoop()
     if ticker then return end
-    ticker = C_Timer.NewTicker(REPEAT_PERIOD, tick)
+    -- La période suit le son choisi (une voix dure plus longtemps qu'un bip).
+    ticker = C_Timer.NewTicker(currentSound().period, tick)
     tick() -- premier bip immédiat si les conditions sont réunies
 end
 
@@ -72,16 +76,20 @@ f:SetScript("OnEvent", function(_, _, name)
     if name == "TankTruckReverse" then
         TankTruckReverseDB = TankTruckReverseDB or {}
         if TankTruckReverseDB.enabled == nil then TankTruckReverseDB.enabled = true end
+        if TankTruckReverseDB.sound == nil then TankTruckReverseDB.sound = Sounds.DEFAULT end
+        TankTruckReverse.SetupOptions() -- construit le panneau une fois la DB prête
     end
 end)
 
 -- ---------------------------------------------------------------------------
--- Slash : /ttr (toggle) | /ttr test | /ttr debug
+-- Slash : /ttr (toggle) | /ttr config | /ttr test | /ttr debug
 -- ---------------------------------------------------------------------------
 SLASH_TANKTRUCKREVERSE1 = "/ttr"
 SlashCmdList["TANKTRUCKREVERSE"] = function(msg)
     local cmd = strtrim(msg):lower()
-    if cmd == "test" then
+    if cmd == "config" then
+        TankTruckReverse.OpenOptions()
+    elseif cmd == "test" then
         playBeep()
         print("|cff00ff00TTR|r bip de test")
     elseif cmd == "debug" then

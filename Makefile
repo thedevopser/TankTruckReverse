@@ -7,7 +7,14 @@ ADDON_FILES := \
 	TankTruckReverse.toc \
 	TankTruckReverse.lua \
 	Core/Trigger.lua \
+	Core/Sounds.lua \
+	Core/Options.lua \
 	Media/backup_beep.ogg \
+	Media/duck_quack.ogg \
+	Media/horn.ogg \
+	Media/retro_blip.ogg \
+	Media/sonar_ping.ogg \
+	Media/CREDITS.md \
 	Textures/icon.tga
 
 .PHONY: zip test help
