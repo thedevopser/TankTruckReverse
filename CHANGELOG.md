@@ -2,6 +2,25 @@
 
 All notable changes to this project are documented here.
 
+## [1.2.0] - 2026-07-24
+
+### Added
+- Options panel (native WoW Settings UI): open with `/ttr config` or via
+  Escape → Options → AddOns → TankTruckReverse. Toggle the addon and pick the
+  sound played on backpedal, with an instant preview on selection.
+- Sound choice: several bundled sounds — truck beep (default), a real duck
+  quack, a real car horn, an 8-bit blip, and a sonar ping. The selection is
+  saved in `TankTruckReverseDB.sound`. The repeat interval follows the chosen
+  sound so longer clips don't overlap.
+- Sound registry lives in `Core/Sounds.lua`; adding a sound is one table entry
+  plus an `.ogg` in `Media/`. Sounds are (re)producible via `tools/gen-sounds.sh`.
+
+### Credits
+- Sounds now use royalty-free samples (CC0 / CC BY-SA) plus synthesized ones —
+  full list, sources and licenses in [`Media/CREDITS.md`](Media/CREDITS.md).
+  Notably the duck is by **Ganesh Mohan T** (CC BY-SA 4.0, Wikimedia Commons)
+  and the car horn is CC0 (Freesound #461679).
+
 ## [1.1.0] - 2026-07-24
 
 ### Changed
