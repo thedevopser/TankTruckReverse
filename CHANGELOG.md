@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here.
 
+## [1.2.1] - 2026-08-11
+
+### Changed
+- Updated for World of Warcraft 12.1.0 (`## Interface: 120100`).
+
 ## [1.2.0] - 2026-07-24
 
 ### Added
