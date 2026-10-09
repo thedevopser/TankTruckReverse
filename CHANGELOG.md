@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## [1.2.2] - 2026-10-13
+
+### Changed
+- Added World of Warcraft 12.1.5 compatibility (`## Interface: 120100, 120105`).
+  12.1.0 remains supported.
+
 ## [1.2.1] - 2026-08-11
 
 ### Changed
